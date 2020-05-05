@@ -1,20 +1,3 @@
-let songList = ["Dior", "TheBox","NoticeMe","outoflove","Leanwitme"]
-
-let songLength = ["300", "240", "280", "180", "200"]
-let songArtists= ["popsmoke", "roddyrich", "pnbrock", "liltecca", "juicewrld"];
-
-///songList.forEach(function(song) {
-   /// $('#songs').append("<ul>" + song  + "</ul>");
-///});
-
-///songLength.forEach(function(song) {
-   /// $("#lengths").append("<ul>" + song  + "</ul>");
-///});
-
-///songArtists.forEach(function(song) {
-   /// $("#artists").append ("<ul>" + song  + "</ul>");
-///});
-
 let Diorsong= {
 artists:"popsmoke",
 songlengths:"300",
@@ -47,8 +30,21 @@ let leanwitmesong={
 
 let playlist=[Diorsong, theboxsong, noticemesong, outoflovesong, leanwitmesong,];
 
-playlist.forEach(function(songobject) {
-    $('#songs').append("<ul>"  +  songobject.song + "</ul>" );
-    $('#artists').append("<ul>"  +  songobject.artists + "</ul>" );    
-    $('#lengths').append("<ul>"  +  songobject.songlengths + "</ul>" );
+
+
+$("#add").click(function(){
+    var userSong=$("#song").val();
+    var usersongartists=$("#artist").val();
+    var songlengths=$("#length").val();
+    let newobject= {
+        song: userSong,
+        artists: usersongartists,
+        songlengths :songlengths,
+    }
+    playlist.push(newobject);
+   $('#songs').html("");/// clears everything in songs
+    playlist.forEach(function(songobject) {
+        $('#songs').append("<ul>"  +  songobject.song +" " +songobject.artists+" " + songobject.songlengths +"</ul>" );
+   });
+  
 });
